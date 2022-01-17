@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.AccountantView">
+   <children>
+      <TableView fx:id="tableView" layoutX="21.0" layoutY="20.0" prefHeight="226.0" prefWidth="570.0">
+         <columns>
+            <TableColumn fx:id="colId" prefWidth="30.39996337890625" text="№" />
+            <TableColumn fx:id="colName" prefWidth="64.79995346069336" text="ФИО" />
+            <TableColumn fx:id="colDate" prefWidth="110.39999389648438" text="Начало семестра" />
+            <TableColumn fx:id="colNOfD" prefWidth="120.80000305175781" text="Часов пропусков" />
+<!--            <TableColumn fx:id="colDeduct" prefWidth="109.60003662109375" text="-" />-->
+            <TableColumn fx:id="colCoef" minWidth="3.99993896484375" prefWidth="88.79998779296875" text="Коэффициент" />
+            <TableColumn fx:id="colSum" minWidth="6.39996337890625" prefWidth="153.60001220703123" text="Итоговая сумма" />
+         </columns>
+      </TableView>
+      <TableView fx:id="tableViewCoef" layoutX="21.0" layoutY="284.0" prefHeight="200.0" prefWidth="570.0">
+        <columns>
+          <TableColumn fx:id="colIdCoef" prefWidth="26.4000244140625" text="№" />
+          <TableColumn fx:id="colDescrCoef" prefWidth="446.4000358581543" text="Описание" />
+            <TableColumn fx:id="colValueCoef" prefWidth="96.79998779296875" text="Сумма" />
+        </columns>
+      </TableView>
+      <Label layoutX="21.0" layoutY="254.0" text="Поощрения студента">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Button layoutX="803.0" layoutY="486.0" mnemonicParsing="false" onAction="#loadScholarship" text="Обновить" />
+      <Button layoutX="885.0" layoutY="486.0" mnemonicParsing="false" onAction="#goBack" text="Выйти" />
+      <Button layoutX="614.0" layoutY="486.0" mnemonicParsing="false" onAction="#delScholarship" text="Удалить запись о стипендии" />
+      <Button layoutX="21.0" layoutY="491.0" mnemonicParsing="false" onAction="#loadCoef" text="Просмотерть Поощрения" />
+      <Label layoutX="614.0" layoutY="279.0" text="Назначить Поощрение" />
+      <TextField fx:id="textFieldNewCoef" layoutX="614.0" layoutY="297.0" />
+      <Button layoutX="614.0" layoutY="331.0" mnemonicParsing="false" onAction="#newCoef" text="Назначить" />
+      <Label fx:id="errNewCoef" layoutX="614.0" layoutY="258.0" text="Ошибка ввода!" textFill="#bf0000" visible="false" />
+      <Label layoutX="614.0" layoutY="386.0" text="Редактировать поощрение" />
+      <TextField fx:id="textFieldEditCoef" layoutX="614.0" layoutY="404.0" />
+      <Button layoutX="614.0" layoutY="438.0" mnemonicParsing="false" onAction="#editCoef" text="Редактировать" />
+      <Label fx:id="errEditCoef" layoutX="614.0" layoutY="365.0" text="Ошибка ввода" textFill="#bf0000" visible="false" />
+      <Label fx:id="errLoadCoef" layoutX="173.0" layoutY="495.0" text="Премия не выбрана" textFill="#c10000" visible="false" />
+      <Label layoutX="615.0" layoutY="20.0" text="Рассчитать стипендию за семестр">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="615.0" layoutY="55.0" text="Студент" />
+      <ComboBox fx:id="selStud" layoutX="615.0" layoutY="73.0" prefWidth="150.0" />
+      <Label layoutX="786.0" layoutY="55.0" text="Часов пропусков" />
+      <Label layoutX="615.0" layoutY="115.0" text="-" />
+      <Label layoutX="786.0" layoutY="115.0" text="Базовая стипендия" />
+      <TextField fx:id="textFieldNOfDays" layoutX="786.0" layoutY="73.0" />
+<!--      <TextField fx:id="textFieldDeduct" layoutX="614.0" layoutY="139.0" />-->
+      <TextField fx:id="textFieldScholSum" layoutX="787.0" layoutY="139.0" />
+      <Button layoutX="614.0" layoutY="181.0" mnemonicParsing="false" onAction="#newScholarship" text="Добавить" />
+      <Label fx:id="errNewScholarship" layoutX="614.0" layoutY="12.0" text="Ошибка ввода" textFill="#bf0000" visible="false" />
+      <Button layoutX="296.0" layoutY="491.0" mnemonicParsing="false" onAction="#delCoef" prefHeight="26.0" prefWidth="137.0" text="Лишить поощрения" />
+      <Button layoutX="613.0" layoutY="230.0" mnemonicParsing="false" onAction="#fillStudent" text="Подгрузить список студентов" />
+      <TextField fx:id="monthField" layoutX="788.0" layoutY="192.0" />
+      <Label layoutX="789.0" layoutY="173.0" text="Месяц начала семестра" />
+      <Label fx:id="scholErr" layoutX="772.0" layoutY="421.0" text="Запись не выбрана" textFill="#bf0000" visible="false" />
+      <Label fx:id="errNotSelected" layoutX="229.0" layoutY="259.0" text="Студент не выбран!" textFill="#ae0000" visible="false" />
+      <TextField fx:id="textFieldNewValueCoef" layoutX="786.0" layoutY="297.0" />
+      <TextField fx:id="textFieldValueCoef" layoutX="786.0" layoutY="404.0" />
+      <Label layoutX="789.0" layoutY="279.0" text="Сумма" />
+   </children>
+</AnchorPane>
